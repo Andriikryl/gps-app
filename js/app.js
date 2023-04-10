@@ -57,6 +57,19 @@ function updateInfo() {
   }
 }
 
+function latLonToXYZ(latlon, R) {
+  const xyz = { x: 0, y: 0, z: 0 };
+  xyz.y = Math.sin(degToRad(latlon.latitude)) * R;
+  const r = Math.cos(degToRad(latlon.latitude)) * R;
+  xyz.x = Math.sin(degToRad(latlon.latitude)) * r;
+  xyz.z = Math.cos(degToRad(latlon.latitude)) * r;
+  return xyz;
+}
+
+function degToRad(degree) {
+  return (degree * Math.PI) / 180;
+}
+
 function getDistance(latlon1, latlon2) {
   const R = 6371000;
   const xyz1 = latLonToXYZ(latlon1, R);
