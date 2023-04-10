@@ -75,7 +75,7 @@ function getDistance(latlon1, latlon2) {
   const xyz1 = latLonToXYZ(latlon1, R);
   const xyz2 = latLonToXYZ(latlon2, R);
   const eucl = euclidean(xyz1, xyz2);
-  return Math.floor(eucl);
+  return eucl;
 }
 
 function euclidean(p1, p2) {
