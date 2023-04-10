@@ -52,7 +52,15 @@ function updateInfo() {
   }
 
   if (A != null && B != null) {
-    let dist = "?";
+    let dist = getDistance(A, B);
     document.getElementById("info").innerHTML = "distance: " + dist + "meters";
   }
+}
+
+function getDistance(latlon1, latlon2) {
+  const R = 6371000;
+  const xyz1 = latLonToXYZ(latlon1, R);
+  const xyz2 = latLonToXYZ(latlon2, R);
+  const eucl = euclidean(xyz1, xyz2);
+  return eucl;
 }
