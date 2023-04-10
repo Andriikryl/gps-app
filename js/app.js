@@ -1,3 +1,4 @@
+let CURRENT_LOCATION = null;
 function main() {
   let geolocation = null;
   if (window.navigator && window.navigator.geolocation) {
@@ -14,7 +15,12 @@ function main() {
 }
 
 function onLocationUpdate(event) {
-  console.log(event);
+  CURRENT_LOCATION = event.coords;
+  document.getElementById("loc").innerHTML =
+    "Your location : <br> Lat:" +
+    CURRENT_LOCATION.latitude +
+    "<br>Lon:" +
+    CURRENT_LOCATION.longitude;
 }
 
 function onError(err) {
